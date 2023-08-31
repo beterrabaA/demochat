@@ -21,6 +21,27 @@ const ChatRoom = ({ chatId }: { chatId: string }) => {
     setIsFinished(data.isFinished)
   }
 
+  const sendMessage = async (event: FormEvent) => {
+    event.preventDefault()
+
+    try {
+      if (formValue.toLowerCase().includes('goodbye')) {
+        axios.post('/api/chat/goodbye', { chatId })
+        setIsFinished(true)
+      }
+      setLocalMessages([...localMessages, { body: formValue, isBot: false }])
+      setFormValue('')
+      const { data } = await axios.post('/api/messages', {
+        message: formValue,
+        chatId,
+      })
+      setBotMessage(data)
+    } catch (error) {
+      console.log('error', error)
+    }
+    dummy.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   useEffect(() => {
     setInitialList()
   }, [])
