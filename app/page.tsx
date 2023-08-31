@@ -29,7 +29,7 @@ const HomePage = () => {
 
   useEffect(() => {
     listados()
-  }, [])
+  }, [conversationList])
   return (
     <div>
       <div className="mt-20 justify-between lg:flex lg:flex-col">
