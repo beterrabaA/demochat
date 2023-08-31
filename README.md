@@ -10,3 +10,12 @@ Chatbot chat and seek information about loans
 - Atlas Datacloud
 - Prisma
 - MongoDb
+
+
+## Users 
+
+username: beterraba123
+password: 12345
+
+username: leo123
+password: 12345
