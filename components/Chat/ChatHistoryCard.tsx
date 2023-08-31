@@ -27,11 +27,27 @@ const ChatHistoryCard = ({ data }: { data: IChat }) => {
     router.push(`/chat/${data.id}`)
   }
 
+  const handleDownlonad = async () => {
+    setIsDownloading(true)
+    const list = await getList(data.id)
+    const newCsv = mapperAndCsvConversor(list)
+    const url = window.URL.createObjectURL(new Blob([newCsv]))
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute(
+      'download',
+      `Conversation ${data.userName} - ${formmaterDate()}.csv`,
+    )
+    document.body.appendChild(link)
+    link.click()
+    setIsDownloading(false)
+  }
+
   const ChatDownloadFooter = () => (
     <button
       className="flex bg-black rounded-3xl font-semibold justify-center items-center max-w-xs mt-1"
       type="button"
-      onClick={() => handleDowlonad()}
+      onClick={() => handleDownlonad()}
     >
       <FaFileDownload />
       {isDownloading ? 'Downloading...' : 'Download'}
