@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt'
 
 import prisma from '@/lib/prismadb'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const body = await request.json()
-  const { name, username, password } = body
+  const { name, username, password, chatId } = body
 
   const hashedPwd = await bcrypt.hash(password, 12)
 
@@ -22,6 +22,15 @@ export async function POST(request: Request) {
       name,
       username,
       hashedPwd,
+    },
+  })
+
+  await prisma.conversation.update({
+    where: {
+      id: chatId,
+    },
+    data: {
+      userName: newUser.name,
     },
   })
 
