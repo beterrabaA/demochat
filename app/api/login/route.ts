@@ -1,11 +1,12 @@
 import bcrypt from 'bcrypt'
 
 import prisma from '@/lib/prismadb'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   const body = await request.json()
-  const { username, password } = body
+  const { username, password, chatId } = body
+  console.log(body)
 
   const user = await prisma.user.findFirst({
     where: {
@@ -18,6 +19,15 @@ export async function POST(request: Request) {
   const normal = await bcrypt.compare(password, user?.hashedPwd)
 
   if (!normal) return new NextResponse('Wrong password', { status: 400 })
+
+  await prisma.conversation.update({
+    where: {
+      id: chatId,
+    },
+    data: {
+      userName: user.name,
+    },
+  })
 
   return NextResponse.json(user)
 }
