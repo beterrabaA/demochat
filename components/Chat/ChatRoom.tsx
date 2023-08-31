@@ -43,6 +43,10 @@ const ChatRoom = ({ chatId }: { chatId: string }) => {
   }
 
   useEffect(() => {
+    setLocalMessages([...localMessages, botMessage])
+  }, [botMessage])
+
+  useEffect(() => {
     setInitialList()
   }, [])
   return (
