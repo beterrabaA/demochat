@@ -9,6 +9,16 @@ import ChatHistoryCard from '@/components/Chat/ChatHistoryCard'
 import { IChat } from '@/types'
 
 const HomePage = () => {
+  const { setChatId } = useAuthContext()
+  const [conversationList, setConversationList] = useState([] as IChat[])
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
+  const pushToChat = async () => {
+    const { data } = await axios.post('/api/chat/new')
+    setChatId(data.id)
+    router.push(`/chat/${data.id}`)
+  }
   return (
     <div>
       <div className="mt-20 justify-between lg:flex lg:flex-col">
