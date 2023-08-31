@@ -21,6 +21,12 @@ const ChatHistoryCard = ({ data }: { data: IChat }) => {
     }/${datado.getFullYear()} ${datado.getHours()}:${datado.getMinutes()}`
   }
 
+  const pushToChat = async () => {
+    setChatId(data.id)
+    setIsLogged(true)
+    router.push(`/chat/${data.id}`)
+  }
+
   const ChatDownloadFooter = () => (
     <button
       className="flex bg-black rounded-3xl font-semibold justify-center items-center max-w-xs mt-1"
