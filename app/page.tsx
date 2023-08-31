@@ -19,6 +19,17 @@ const HomePage = () => {
     setChatId(data.id)
     router.push(`/chat/${data.id}`)
   }
+  const listados = async () => {
+    setIsLoading(true)
+    const lista = await axios.get('/api/chat/list')
+
+    setConversationList(lista.data)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    listados()
+  }, [])
   return (
     <div>
       <div className="mt-20 justify-between lg:flex lg:flex-col">
