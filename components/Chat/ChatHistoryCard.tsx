@@ -14,6 +14,13 @@ const ChatHistoryCard = ({ data }: { data: IChat }) => {
   const [isDownloading, setIsDownloading] = useState(false)
   const router = useRouter()
 
+  const formmaterDate = () => {
+    const datado = new Date(data.updatedAt)
+    return `${datado.getDate()}/${
+      datado.getMonth() + 1
+    }/${datado.getFullYear()} ${datado.getHours()}:${datado.getMinutes()}`
+  }
+
   const ChatDownloadFooter = () => (
     <button
       className="flex bg-black rounded-3xl font-semibold justify-center items-center max-w-xs mt-1"
