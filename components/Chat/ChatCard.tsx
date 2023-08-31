@@ -7,7 +7,7 @@ const ChatCard = () => {
       <div className={'message received'}>
         <Image
           src={
-            'https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent.png'
+            'https://e7.pngegg.com/pngimages/710/450/png-clipart-computer-icons-internet-bot-axialis-iconworkshop-chatbot-end-miscellaneous-purple-thumbnail.png'
           }
           alt="perfil"
           width={15}
