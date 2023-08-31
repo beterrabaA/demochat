@@ -1,9 +1,7 @@
-import bcrypt from 'bcrypt'
-
 import prisma from '@/lib/prismadb'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const newConversation = await prisma.conversation.create({
       data: {},
