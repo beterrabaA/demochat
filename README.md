@@ -1,7 +1,6 @@
 # DemoChat
 
-Chatbot conversar e buscar informações sobre emprestimos
-
+Chatbot chat and seek information about loans
 
 ## Feature
 
