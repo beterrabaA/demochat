@@ -14,6 +14,16 @@ const ChatRoom = ({ chatId }: { chatId: string }) => {
   const [localMessages, setLocalMessages] = useState([] as Message[])
   const [isFinished, setIsFinished] = useState(false)
 
+  const setInitialList = async () => {
+    const startList = await getList(chatId)
+    const { data } = await axios.post('/api/chat', { chatId })
+    setLocalMessages(startList)
+    setIsFinished(data.isFinished)
+  }
+
+  useEffect(() => {
+    setInitialList()
+  }, [])
   return (
     <>
       <main>
