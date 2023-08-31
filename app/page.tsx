@@ -24,11 +24,11 @@ const HomePage = () => {
     const lista = await axios.get('/api/chat/list')
 
     setConversationList(lista.data)
-    setIsLoading(false)
   }
 
   useEffect(() => {
     listados()
+    setIsLoading(false)
   }, [conversationList])
   return (
     <div>

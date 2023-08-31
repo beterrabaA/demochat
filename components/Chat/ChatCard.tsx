@@ -24,11 +24,11 @@ const ChatCard = () => {
               </Link>
             </div>
             <div className="flex w-full border-b-2 border-black justify-end items-end">
-              <Link href="/about">
+              <Link href="/card/more">
                 <h2 className="py-2">Loan conditions</h2>
               </Link>
             </div>
-            <Link href="/help">
+            <Link href="/card/help">
               <h2 className="pt-2">Help</h2>
             </Link>
           </div>
