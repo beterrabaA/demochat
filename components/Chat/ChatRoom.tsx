@@ -8,6 +8,12 @@ import { getList } from '@/utils'
 import { Message } from '@/types'
 
 const ChatRoom = ({ chatId }: { chatId: string }) => {
+  const dummy = useRef<HTMLInputElement | null>(null)
+  const [formValue, setFormValue] = useState('')
+  const [botMessage, setBotMessage] = useState({} as Message)
+  const [localMessages, setLocalMessages] = useState([] as Message[])
+  const [isFinished, setIsFinished] = useState(false)
+
   return (
     <>
       <main>
