@@ -6,7 +6,6 @@ import { NextResponse, NextRequest } from 'next/server'
 export async function POST(request: NextRequest) {
   const body = await request.json()
   const { username, password, chatId } = body
-  console.log(body)
 
   const user = await prisma.user.findFirst({
     where: {
