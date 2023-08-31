@@ -15,7 +15,7 @@ const HomePage = () => {
   const router = useRouter()
 
   const pushToChat = async () => {
-    const { data } = await axios.post('/api/chat/new')
+    const { data } = await axios.get('/api/chat/new')
     setChatId(data.id)
     router.push(`/chat/${data.id}`)
   }

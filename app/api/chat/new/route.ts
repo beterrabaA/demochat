@@ -1,7 +1,7 @@
 import prisma from '@/lib/prismadb'
-import { NextResponse, NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function POST(request: NextRequest) {
+export async function GET() {
   try {
     const newConversation = await prisma.conversation.create({
       data: {},
